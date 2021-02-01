@@ -1,5 +1,6 @@
 ﻿using GreenAppRider.Services;
 using GreenAppRider.Views;
+using Microsoft.WindowsAzure.MobileServices;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -8,7 +9,7 @@ namespace GreenAppRider
 {
     public partial class App : Application
     {
-
+        public static readonly MobileServiceClient MobileService = new MobileServiceClient("https://greenmarketwebapp.azurewebsites.net");
         public App()
         {
             InitializeComponent();

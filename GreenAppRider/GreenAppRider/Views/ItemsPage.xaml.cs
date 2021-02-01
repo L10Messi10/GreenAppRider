@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using static GreenAppRider.App;
 
 namespace GreenAppRider.Views
 {
@@ -19,14 +20,24 @@ namespace GreenAppRider.Views
         public ItemsPage()
         {
             InitializeComponent();
-
-            BindingContext = _viewModel = new ItemsViewModel();
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
-            base.OnAppearing();
-            _viewModel.OnAppearing();
+            await OnGetDeliveryOrders();
+        }
+
+        private async Task OnGetDeliveryOrders()
+        {
+            RefreshView.IsRefreshing = true;
+            var getOrderss = await MobileService.GetTable<V_Confirmed_Orders>().Where(p => p.order_choice == "Delivery").ToListAsync();
+            OrdersList.ItemsSource = getOrderss;
+            RefreshView.IsRefreshing = false;
+        }
+
+        private async void RefreshView_OnRefreshing(object sender, EventArgs e)
+        {
+            await OnGetDeliveryOrders();
         }
     }
 }
