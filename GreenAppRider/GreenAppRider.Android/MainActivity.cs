@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using TouchEffect.Android;
 using Xamarin.Forms;
 
 
@@ -25,6 +26,8 @@ namespace GreenAppRider.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
+            global::Xamarin.Forms.FormsMaterial.Init(this, savedInstanceState);
+            TouchEffectPreserver.Preserve();
             LoadApplication(new App());
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)

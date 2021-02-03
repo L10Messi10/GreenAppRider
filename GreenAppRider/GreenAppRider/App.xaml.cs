@@ -10,10 +10,11 @@ namespace GreenAppRider
     public partial class App : Application
     {
         public static readonly MobileServiceClient MobileService = new MobileServiceClient("https://greenmarketwebapp.azurewebsites.net");
+        public static string riderId;
         public App()
         {
             InitializeComponent();
-
+            Device.SetFlags(new[] { "SwipeView_Experimental" }); // Add here
             DependencyService.Register<MockDataStore>();
             MainPage = new AppShell();
         }

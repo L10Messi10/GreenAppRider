@@ -3,12 +3,59 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              mc:Ignorable="d"
+             BackgroundImageSource="https://i.ibb.co/JR6cnhB/1095491.jpg"
              x:Class="GreenAppRider.Views.LoginPage"
              Shell.NavBarIsVisible="False">
-    <ContentPage.Content>
-        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-            <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
-        </StackLayout>
-    </ContentPage.Content>
+    <StackLayout>
+        <ScrollView>
+            <Grid>
+                <StackLayout Margin="15,50,15,0" HeightRequest="500" >
+                    <Frame HasShadow="True" CornerRadius="10" Opacity="0.7"
+                           HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                        <StackLayout Margin="10" x:Name="marketcontentlayout" >
+                            <StackLayout HorizontalOptions="CenterAndExpand">
+                                <Label x:Name="lblmktid" Text="{Binding status}"/>
+                                <Label Text="Sign In" HorizontalOptions="CenterAndExpand" FontSize="25"
+                                       TextColor="{StaticResource Primary}" FontFamily="TitleFontLight" />
+                            </StackLayout>
+                            <StackLayout Margin="0,15,0,0">
+                                <Frame CornerRadius="50" BorderColor="Gray" Padding="0" Margin="0"
+                                       HeightRequest="50" BackgroundColor="Transparent">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Frame VerticalOptions="Center" HeightRequest="35" WidthRequest="35" CornerRadius="50" Padding="0" HorizontalOptions="Start" Margin="7">
+                                            <forms:CachedImage Source="https://cdn4.iconfinder.com/data/icons/black-white-social-media/32/mail_email_envelope_send_message-512.png"
+                                                   Aspect="AspectFill"/>
+                                        </Frame>
+                                        <Entry x:Name="emailentry" Placeholder="Email address" PlaceholderColor="Gray" HorizontalOptions="FillAndExpand"
+                                               TextColor="{StaticResource TextBlackColor}" Margin="0,0,15,0"
+                                               Keyboard="Email"/>
+                                    </StackLayout>
+                                </Frame>
+                                <Frame CornerRadius="50" BorderColor="Gray" Padding="0" Margin="0,20,0,0"
+                                       HeightRequest="50" BackgroundColor="Transparent">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Frame VerticalOptions="Center" HeightRequest="35" WidthRequest="35" CornerRadius="50" Padding="0" HorizontalOptions="Start" Margin="7">
+                                            <forms:CachedImage Source="https://cdn2.iconfinder.com/data/icons/black-white-social-media/32/windows_online_social_media_operating_system-512.png"
+                                               Aspect="AspectFill"/>
+                                        </Frame>
+                                        <Entry x:Name="passentry" Placeholder="Password" PlaceholderColor="Gray" HorizontalOptions="FillAndExpand"
+                                               TextColor="{StaticResource TextBlackColor}" Margin="0,0,15,0"
+                                               IsPassword="True"/>
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+                            <ActivityIndicator x:Name="indicatorloader" Color="Green" IsVisible="False" IsRunning="True" />
+                            <Button x:Name="btnlogin" Text="SIGN IN" CornerRadius="20" HeightRequest="40" BackgroundColor="{StaticResource Primary}"
+                                    TextColor="{StaticResource TextWhiteColor}" Clicked="Btnlogin_OnClicked"/>
+                        </StackLayout>
+                    </Frame>
+                    
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+        <Button x:Name="btnclose" HeightRequest="60" Text="Close" VerticalOptions="EndAndExpand" Margin="0" TextColor="{StaticResource TextWhiteColor}"
+                BackgroundColor="{StaticResource Primary}" FontAttributes="Bold" Clicked="Btnclose_OnClicked"/>
+    </StackLayout>
 </ContentPage>

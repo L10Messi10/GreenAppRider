@@ -13,6 +13,7 @@ namespace GreenAppRider
         {
             InitializeComponent();
             Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
+            Routing.RegisterRoute(nameof(IntransitPage), typeof(IntransitPage));
             Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
             //try
             //{

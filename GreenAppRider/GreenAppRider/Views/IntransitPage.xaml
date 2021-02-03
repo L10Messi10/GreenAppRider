@@ -1,16 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GreenAppRider.Views.ItemsPage"
-             Title="Confirmed orders" BackgroundColor="{StaticResource Primary}"
-             xmlns:local="clr-namespace:GreenAppRider.ViewModels"  
-             xmlns:model="clr-namespace:GreenAppRider.Models"
-             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             Title="In Transit" BackgroundColor="{StaticResource Primary}"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
-             x:Name="BrowseItemsPage">
+             x:Class="GreenAppRider.Views.IntransitPage">
     <StackLayout>
         <RefreshView x:Name="RefreshView" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
-                     Refreshing="RefreshView_OnRefreshing" BackgroundColor="{StaticResource Primary}"
+                     BackgroundColor="{StaticResource Primary}"
                      RefreshColor="{StaticResource TextWhiteColor}">
             <CollectionView x:Name="OrdersList" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
                             SelectionMode="Single">
@@ -26,10 +23,11 @@
                                            IsClippedToBounds="True" >
                                     <SwipeView.LeftItems>
                                         <SwipeItems Mode="Reveal" SwipeBehaviorOnInvoked="Close">
-                                            <SwipeItemView BackgroundColor="{StaticResource Primary}" Invoked="SwipeItem_OnInvoked" Margin="10">
+                                            <SwipeItemView BackgroundColor="{StaticResource Primary}" Margin="10"
+                                                        Invoked="OnCall_OnInvoked">
                                                 <StackLayout Margin="10">
                                                     <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-                                                        <ff:CachedImage Source="phone" HeightRequest="30" WidthRequest="30"
+                                                        <forms:CachedImage Source="phone" HeightRequest="30" WidthRequest="30"
                                                                            Aspect="AspectFit"/>
                                                         <Label Text="Call" HorizontalOptions="CenterAndExpand" TextColor="{StaticResource TextWhiteColor}"/>
                                                     </StackLayout>
@@ -38,35 +36,29 @@
                                             <SwipeItemView BackgroundColor="{StaticResource Primary}" Margin="10">
                                                 <StackLayout Margin="10">
                                                     <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-                                                        <ff:CachedImage Source="icon_feed" HeightRequest="30" WidthRequest="30"
+                                                        <forms:CachedImage Source="pay" HeightRequest="30" WidthRequest="30"
                                                                            Aspect="AspectFit"/>
-                                                        <Label Text="Details" HorizontalOptions="CenterAndExpand" TextColor="{StaticResource TextWhiteColor}"/>
+                                                        <Label Text="Pay" HorizontalOptions="CenterAndExpand" TextColor="{StaticResource TextWhiteColor}"/>
                                                     </StackLayout>
                                                 </StackLayout>
                                             </SwipeItemView>
                                         </SwipeItems>
                                     </SwipeView.LeftItems>
-                                    <SwipeView.RightItems>
-                                        <SwipeItems Mode="Execute" SwipeBehaviorOnInvoked="Close">
-                                            <SwipeItem BackgroundColor="{StaticResource Primary}"
-                                                       IconImageSource="in_transit" 
-                                                       Text="Deliver Now" Invoked="In_Transit_OnInvoked"/>
-                                        </SwipeItems>
-                                    </SwipeView.RightItems>
+
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" BackgroundColor="White"
-                                                 Margin="10" VerticalOptions="CenterAndExpand">
+                                                 Margin="10">
                                         <StackLayout WidthRequest="70" VerticalOptions="CenterAndExpand">
-                                            <ff:CachedImage x:Name="cusimg" Source="{Binding propic}" Aspect="AspectFill"
+                                            <forms:CachedImage x:Name="cusimg" Source="{Binding propic}" Aspect="AspectFill"
                                                         LoadingPlaceholder="person.png" WidthRequest="70"
                                                         HeightRequest="70" 
                                                         DownsampleToViewSize="True"
                                                         ErrorPlaceholder="person">
-                                                <ff:CachedImage.Transformations>
+                                                <forms:CachedImage.Transformations>
                                                     <transformations:CircleTransformation BorderHexColor="#009E49"
                                                                                       BorderSize="10" />
                                                     <transformations:RoundedTransformation Radius="60" />
-                                                </ff:CachedImage.Transformations>
-                                            </ff:CachedImage>
+                                                </forms:CachedImage.Transformations>
+                                            </forms:CachedImage>
                                         </StackLayout>
                                         <StackLayout WidthRequest="180">
                                             <Label>
@@ -129,5 +121,4 @@
             </CollectionView>
         </RefreshView>
     </StackLayout>
-
 </ContentPage>
