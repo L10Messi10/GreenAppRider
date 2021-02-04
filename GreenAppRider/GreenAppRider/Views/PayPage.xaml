@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" BackgroundColor="Transparent"
+             x:Class="GreenAppRider.Views.PayPage">
+
+    <Grid>
+        <StackLayout VerticalOptions="FillAndExpand" BackgroundColor="Black"
+                     Opacity="0.4"/>
+        <Frame HeightRequest="300" CornerRadius="20" BackgroundColor="{StaticResource TextWhiteColor}" VerticalOptions="EndAndExpand">
+            <Label Text="Welcome to Xamarin.Forms!"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" />
+        </Frame>
+    </Grid>
+    
+</ContentPage>

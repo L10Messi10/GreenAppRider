@@ -33,7 +33,8 @@
                                                     </StackLayout>
                                                 </StackLayout>
                                             </SwipeItemView>
-                                            <SwipeItemView BackgroundColor="{StaticResource Primary}" Margin="10">
+                                            <SwipeItemView BackgroundColor="{StaticResource Primary}" Margin="10"
+                                                           Invoked="OnPay_OnInvoked">
                                                 <StackLayout Margin="10">
                                                     <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
                                                         <forms:CachedImage Source="pay" HeightRequest="30" WidthRequest="30"

@@ -35,7 +35,8 @@
                                                     </StackLayout>
                                                 </StackLayout>
                                             </SwipeItemView>
-                                            <SwipeItemView BackgroundColor="{StaticResource Primary}" Margin="10">
+                                            <SwipeItemView BackgroundColor="{StaticResource Primary}" Margin="10" 
+                                                           Invoked="OnDetails_OnInvoked">
                                                 <StackLayout Margin="10">
                                                     <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
                                                         <ff:CachedImage Source="icon_feed" HeightRequest="30" WidthRequest="30"

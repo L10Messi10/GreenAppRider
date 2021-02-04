@@ -37,5 +37,12 @@ namespace GreenAppRider.Views
             if (item == null) return;
             if (item.BindingContext is V_Delivery geTNumber) PhoneDialer.Open(geTNumber.mobile_num);
         }
+
+        private async void OnPay_OnInvoked(object sender, EventArgs e)
+        {
+            Shell.Current.Opacity = 0.9;
+            await Navigation.PushModalAsync(new PayPage());
+            Shell.Current.Opacity = 1;
+        }
     }
 }

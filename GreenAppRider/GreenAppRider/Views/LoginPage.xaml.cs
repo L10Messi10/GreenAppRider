@@ -54,7 +54,10 @@ namespace GreenAppRider.Views
                         {
                             indicatorloader.IsVisible = false;
                             Settings.LastUsedEmail = emailentry.Text;
+                            SignedIn = true;
                             riderId = users.id;
+                            riderId = users.id;
+                            rdr_fullname = users.rdr_fullname;
                             //Device.BeginInvokeOnMainThread(() => { Application.Current.MainPage = new MenuPage(); });
                             ////PROBLEM HERE LOGING OUT AND NOT REMEMBERING EMAIL
                             //await Navigation.PushAsync(new MenuPage(), true);

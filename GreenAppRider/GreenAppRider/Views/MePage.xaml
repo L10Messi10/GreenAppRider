@@ -7,7 +7,6 @@
              BackgroundImageSource="https://i.ibb.co/JR6cnhB/1095491.jpg"
              x:Class="GreenAppRider.Views.MePage">
     <StackLayout  Spacing="0" Padding="0" Orientation="Vertical">
-
         <ScrollView VerticalOptions="Start" Orientation="Vertical">
             <StackLayout Spacing="0">
                 <StackLayout VerticalOptions="StartAndExpand" Orientation="Vertical" Spacing="0" Padding="0" >
@@ -45,7 +44,7 @@
                                  touchEffect:TouchEff.PressedOpacity="0.6"
                                  Orientation="Horizontal" x:Name="menuProfile">
                         <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer NumberOfTapsRequired="1" />
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="LogOut_OnTapped"/>
                         </StackLayout.GestureRecognizers>
                         <Image Source="exit" WidthRequest="30" Margin="10,0,0,0" />
                         <Label Text="Logout" VerticalOptions="Center" FontSize="15"

@@ -11,6 +11,9 @@ namespace GreenAppRider
     {
         public static readonly MobileServiceClient MobileService = new MobileServiceClient("https://greenmarketwebapp.azurewebsites.net");
         public static string riderId;
+        public static string Oid;
+        public static string rdr_fullname;
+        public static bool SignedIn;
         public App()
         {
             InitializeComponent();

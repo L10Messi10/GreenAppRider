@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="{StaticResource Primary}"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             x:Class="GreenAppRider.Views.OrderDetailPage">
+    <StackLayout Spacing="0">
+        <RefreshView x:Name="RefreshView" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                     BackgroundColor="{StaticResource Primary}" Refreshing="RefreshView_OnRefreshing"
+                     RefreshColor="{StaticResource TextWhiteColor}">
+            <CollectionView x:Name="OrdersList" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                            SelectionMode="Single">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"
+                                     Span="1" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <ContentView Padding="2">
+                            <Frame HeightRequest="110" CornerRadius="10" Padding="5">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand"
+                                             BackgroundColor="White"
+                                             Margin="10" VerticalOptions="CenterAndExpand">
+                                    <StackLayout WidthRequest="70" VerticalOptions="CenterAndExpand">
+                                        <forms:CachedImage Source="{Binding img_uri}"
+                                                           Aspect="AspectFill"
+                                                           LoadingPlaceholder="person.png" WidthRequest="70"
+                                                           HeightRequest="70"
+                                                           DownsampleToViewSize="True"
+                                                           ErrorPlaceholder="person">
+                                            <forms:CachedImage.Transformations>
+                                                <transformations:CircleTransformation BorderHexColor="#009E49"
+                                                                                      BorderSize="10" />
+                                                <transformations:RoundedTransformation Radius="60" />
+                                            </forms:CachedImage.Transformations>
+                                        </forms:CachedImage>
+                                    </StackLayout>
+                                    <StackLayout WidthRequest="180">
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding prod_name}" FontSize="14"
+                                                          TextColor="{StaticResource Primary}"
+                                                          FontAttributes="Bold" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="₱ " />
+                                                    <Span Text="{Binding prod_price}" FontSize="12"
+                                                          TextColor="{StaticResource TextBlackColor}" />
+                                                    <Span Text=" / " />
+                                                    <Span Text="{Binding unit_desc}" FontSize="12"
+                                                          TextColor="{StaticResource TextBlackColor}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Qty: " FontSize="12" FontAttributes="Italic"
+                                                          TextColor="#C7C7C7" />
+                                                    <Span Text="{Binding qty}" FontSize="12" FontAttributes="Italic"
+                                                          TextColor="{StaticResource TextBlackColor}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </StackLayout>
+                                    <StackLayout HorizontalOptions="EndAndExpand">
+                                        <StackLayout HorizontalOptions="EndAndExpand">
+                                            <Label TextColor="{StaticResource PriceColor}">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="₱ " FontSize="15" />
+                                                        <Span Text="{Binding sub_total}" FontSize="15"
+                                                              FontAttributes="Bold" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </ContentView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+        <Button VerticalOptions="EndAndExpand" x:Name="btnclose" BackgroundColor="{StaticResource Primary_Dark}"
+                Text="Close" Margin="0" HeightRequest="60" Padding="0" Visual="Material"
+                TextColor="{StaticResource TextWhiteColor}" Clicked="Btnclose_OnClicked" />
+    </StackLayout>
+</ContentPage>
