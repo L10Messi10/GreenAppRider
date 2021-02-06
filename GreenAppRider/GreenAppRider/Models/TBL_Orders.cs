@@ -29,10 +29,6 @@ namespace GreenAppRider.Models
 
         #endregion
 
-        public static async Task Insert(TBL_Orders order)
-        {
-            await MobileService.GetTable<TBL_Orders>().InsertAsync(order);
-        }
         public static async Task Update(TBL_Orders orders)
         {
             await MobileService.GetTable<TBL_Orders>().UpdateAsync(orders);

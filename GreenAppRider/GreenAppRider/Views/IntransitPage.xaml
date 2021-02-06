@@ -7,7 +7,7 @@
              x:Class="GreenAppRider.Views.IntransitPage">
     <StackLayout>
         <RefreshView x:Name="RefreshView" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
-                     BackgroundColor="{StaticResource Primary}"
+                     BackgroundColor="{StaticResource Primary}" Refreshing="RefreshView_OnRefreshing"
                      RefreshColor="{StaticResource TextWhiteColor}">
             <CollectionView x:Name="OrdersList" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
                             SelectionMode="Single">
@@ -51,7 +51,7 @@
                                         <StackLayout WidthRequest="70" VerticalOptions="CenterAndExpand">
                                             <forms:CachedImage x:Name="cusimg" Source="{Binding propic}" Aspect="AspectFill"
                                                         LoadingPlaceholder="person.png" WidthRequest="70"
-                                                        HeightRequest="70" 
+                                                        HeightRequest="70" BitmapOptimizations="True"
                                                         DownsampleToViewSize="True"
                                                         ErrorPlaceholder="person">
                                                 <forms:CachedImage.Transformations>

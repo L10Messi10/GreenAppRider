@@ -12,7 +12,9 @@
                 <StackLayout VerticalOptions="StartAndExpand" Orientation="Vertical" Spacing="0" Padding="0" >
                     <StackLayout HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
                         <forms:CachedImage x:Name="profpic" HeightRequest="140" WidthRequest="140" HorizontalOptions="EndAndExpand"
-                                        LoadingPlaceholder="notfound.png" Aspect="AspectFill" ErrorPlaceholder="notfound.png">
+                                        LoadingPlaceholder="notfound.png"
+                                        BitmapOptimizations="True"
+                                        Aspect="AspectFill" ErrorPlaceholder="notfound.png">
                             <forms:CachedImage.Transformations>
                                 <transformations:CircleTransformation BorderHexColor="#FFFFFF" BorderSize="10"/>
                             </forms:CachedImage.Transformations>

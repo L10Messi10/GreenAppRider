@@ -24,7 +24,7 @@
                                              Margin="10" VerticalOptions="CenterAndExpand">
                                     <StackLayout WidthRequest="70" VerticalOptions="CenterAndExpand">
                                         <forms:CachedImage Source="{Binding img_uri}"
-                                                           Aspect="AspectFill"
+                                                           Aspect="AspectFill" BitmapOptimizations="True"
                                                            LoadingPlaceholder="person.png" WidthRequest="70"
                                                            HeightRequest="70"
                                                            DownsampleToViewSize="True"

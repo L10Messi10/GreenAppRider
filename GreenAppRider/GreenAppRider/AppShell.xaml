@@ -25,7 +25,7 @@
     <TabBar>
         <ShellContent Title="Orders" Icon="orders.png" ContentTemplate="{DataTemplate local:ItemsPage}" />
         <ShellContent Title="In Transit" Icon="in_transit.png" ContentTemplate="{DataTemplate local:IntransitPage}" />
-        <ShellContent Title="Delivered" Icon="shipped.png" ContentTemplate="{DataTemplate local:IntransitPage}"/>
+        <ShellContent Title="Delivered" Icon="shipped.png" ContentTemplate="{DataTemplate local:DeliveredPage}"/>
         <ShellContent Title="Me" Icon="user.png" ContentTemplate="{DataTemplate local:MePage}"/>
     </TabBar>
 </Shell>

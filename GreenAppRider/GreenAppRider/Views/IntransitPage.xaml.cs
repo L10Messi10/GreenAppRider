@@ -40,9 +40,19 @@ namespace GreenAppRider.Views
 
         private async void OnPay_OnInvoked(object sender, EventArgs e)
         {
-            Shell.Current.Opacity = 0.9;
+            var item = sender as SwipeItemView;
+            if (item == null) return;
+            if (item.BindingContext is V_Delivery geTId)
+            {
+                Oid= geTId.order_id;
+                del_Id = geTId.id;
+            }
             await Navigation.PushModalAsync(new PayPage());
-            Shell.Current.Opacity = 1;
+        }
+
+        private async void RefreshView_OnRefreshing(object sender, EventArgs e)
+        {
+            await OnGetDeliveryOrdersInTransit();
         }
     }
 }

@@ -77,44 +77,36 @@ namespace GreenAppRider.Views
         {
             var ans = await DisplayAlert("Deliver now?", "Are  you sure to deliver this order now?", "Yes", "No");
             if (!ans) return;
-            var item = sender as SwipeItemView;
-            string oid;
-            if (item != null)
+            if (!(sender is SwipeItem item) || !(item.BindingContext is V_Confirmed_Orders model)) return;
+            var oid = model.id;
+            //insert to delivery table
+            var orderDetails = new TBL_Delivery()
             {
-                if (item.BindingContext is V_Confirmed_Orders model)
-                {
-                    oid = model.id;
-                    //insert to delivery table
-                    var orderDetails = new TBL_Delivery()
-                    {
-                        order_id = oid,
-                        users_id = model.users_id,
-                        del_datetime = Now.ToString("ddd, dd MMM yyyy h:mm tt"),
-                        del_stat = "In Transit"
-                    };
-                    await TBL_Delivery.Insert(orderDetails);
-                    //Update tbl_orders
-                    var orders = new TBL_Orders()
-                    {
-                        id = model.id,
-                        users_id = model.users_id,
-                        order_date = model.order_date,
-                        cart_datetime = model.cart_datetime,
-                        stat = "1",
-                        order_status = "Ordered",
-                        order_choice = "For Delivery",
-                        del_address = model.del_address,
-                        notes = model.notes,
-                        del_lat = model.del_lat,
-                        del_long = model.del_long,
-                        pickup_time = "-",
-                        itms_qty = model.itms_qty,
-                        tot_payable = model.tot_payable
-                    };
-                    await TBL_Orders.Update(orders);
-                }
-            }
-
+                order_id = oid,
+                users_id = model.users_id,
+                del_datetime = Now.ToString("ddd, dd MMM yyyy h:mm tt"),
+                del_stat = "In Transit"
+            };
+            await TBL_Delivery.Insert(orderDetails);
+            //Update tbl_orders
+            var orders = new TBL_Orders()
+            {
+                id = model.id,
+                users_id = model.users_id,
+                order_date = model.order_date,
+                cart_datetime = model.cart_datetime,
+                stat = "1",
+                order_status = "Ordered",
+                order_choice = "For Delivery",
+                del_address = model.del_address,
+                notes = model.notes,
+                del_lat = model.del_lat,
+                del_long = model.del_long,
+                pickup_time = "-",
+                itms_qty = model.itms_qty,
+                tot_payable = model.tot_payable
+            };
+            await TBL_Orders.Update(orders);
             await DisplayAlert("In Transit", "The order is now in transit!", "OK");
             await OnGetDeliveryOrders();
         }
