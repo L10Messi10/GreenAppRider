@@ -6,120 +6,178 @@
              xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              x:Class="GreenAppRider.Views.IntransitPage">
     <StackLayout>
-        <RefreshView x:Name="RefreshView" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
-                     BackgroundColor="{StaticResource Primary}" Refreshing="RefreshView_OnRefreshing"
-                     RefreshColor="{StaticResource TextWhiteColor}">
-            <CollectionView x:Name="OrdersList" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
-                            SelectionMode="Single">
-                <CollectionView.ItemsLayout>
-                    <GridItemsLayout Orientation="Vertical"
-                                     Span="1" />
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <ContentView Padding="2">
-                            <Frame HeightRequest="110" CornerRadius="10" Padding="5">
-                                <SwipeView HeightRequest="50" WidthRequest="50" 
-                                           IsClippedToBounds="True" >
-                                    <SwipeView.LeftItems>
-                                        <SwipeItems Mode="Reveal" SwipeBehaviorOnInvoked="Close">
-                                            <SwipeItemView BackgroundColor="{StaticResource Primary}" Margin="10"
-                                                        Invoked="OnCall_OnInvoked">
-                                                <StackLayout Margin="10">
-                                                    <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-                                                        <forms:CachedImage Source="phone" HeightRequest="30" WidthRequest="30"
-                                                                           Aspect="AspectFit"/>
-                                                        <Label Text="Call" HorizontalOptions="CenterAndExpand" TextColor="{StaticResource TextWhiteColor}"/>
+        <AbsoluteLayout>
+            <RefreshView x:Name="RefreshView" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                         AbsoluteLayout.LayoutBounds="0,0,1,1"
+                         AbsoluteLayout.LayoutFlags="All"
+                         BackgroundColor="{StaticResource TextWhiteColor}" Refreshing="RefreshView_OnRefreshing"
+                         RefreshColor="{StaticResource Primary}">
+                <CollectionView x:Name="OrdersList" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                                SelectionMode="Single">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical"
+                                         Span="1" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <ContentView Padding="2">
+                                <Frame HeightRequest="110" CornerRadius="10" Padding="5">
+                                    <SwipeView HeightRequest="50" WidthRequest="50"
+                                               IsClippedToBounds="True">
+                                        <SwipeView.LeftItems>
+                                            <SwipeItems Mode="Reveal" SwipeBehaviorOnInvoked="Close">
+                                                <SwipeItemView BackgroundColor="{StaticResource Primary}" Margin="10"
+                                                               Invoked="OnCall_OnInvoked">
+                                                    <StackLayout Margin="10">
+                                                        <StackLayout Orientation="Vertical"
+                                                                     VerticalOptions="CenterAndExpand"
+                                                                     HorizontalOptions="CenterAndExpand">
+                                                            <forms:CachedImage Source="phone" HeightRequest="30"
+                                                                               WidthRequest="30"
+                                                                               Aspect="AspectFit" />
+                                                            <Label Text="Call" HorizontalOptions="CenterAndExpand"
+                                                                   TextColor="{StaticResource TextWhiteColor}" />
+                                                        </StackLayout>
                                                     </StackLayout>
-                                                </StackLayout>
-                                            </SwipeItemView>
-                                            <SwipeItemView BackgroundColor="{StaticResource Primary}" Margin="10"
-                                                           Invoked="OnPay_OnInvoked">
-                                                <StackLayout Margin="10">
-                                                    <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-                                                        <forms:CachedImage Source="pay" HeightRequest="30" WidthRequest="30"
-                                                                           Aspect="AspectFit"/>
-                                                        <Label Text="Pay" HorizontalOptions="CenterAndExpand" TextColor="{StaticResource TextWhiteColor}"/>
+                                                </SwipeItemView>
+                                                <SwipeItemView BackgroundColor="{StaticResource Primary}" Margin="10"
+                                                               Invoked="OnPay_OnInvoked">
+                                                    <StackLayout Margin="10">
+                                                        <StackLayout Orientation="Vertical"
+                                                                     VerticalOptions="CenterAndExpand"
+                                                                     HorizontalOptions="CenterAndExpand">
+                                                            <forms:CachedImage Source="pay" HeightRequest="30"
+                                                                               WidthRequest="30"
+                                                                               Aspect="AspectFit" />
+                                                            <Label Text="Pay" HorizontalOptions="CenterAndExpand"
+                                                                   TextColor="{StaticResource TextWhiteColor}" />
+                                                        </StackLayout>
                                                     </StackLayout>
-                                                </StackLayout>
-                                            </SwipeItemView>
-                                        </SwipeItems>
-                                    </SwipeView.LeftItems>
+                                                </SwipeItemView>
+                                            </SwipeItems>
+                                        </SwipeView.LeftItems>
+                                        <SwipeView.RightItems>
+                                            <SwipeItems Mode="Execute" SwipeBehaviorOnInvoked="Close">
+                                                <SwipeItemView BackgroundColor="{StaticResource Primary}" Margin="10"
+                                                               Invoked="OnMap_OnInvoked">
+                                                    <!--<StackLayout Margin="10">
+                                                        <StackLayout Orientation="Vertical"
+                                                                     VerticalOptions="CenterAndExpand"
+                                                                     HorizontalOptions="CenterAndExpand">
+                                                            <forms:CachedImage Source="phone" HeightRequest="30"
+                                                                               WidthRequest="30"
+                                                                               Aspect="AspectFit" />
+                                                            <Label Text="Call" HorizontalOptions="CenterAndExpand"
+                                                                   TextColor="{StaticResource TextWhiteColor}" />
+                                                        </StackLayout>
+                                                    </StackLayout>-->
+                                                </SwipeItemView>
+                                            </SwipeItems>
+                                        </SwipeView.RightItems>
 
-                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" BackgroundColor="White"
-                                                 Margin="10">
-                                        <StackLayout WidthRequest="70" VerticalOptions="CenterAndExpand">
-                                            <forms:CachedImage x:Name="cusimg" Source="{Binding propic}" Aspect="AspectFill"
-                                                        LoadingPlaceholder="person.png" WidthRequest="70"
-                                                        HeightRequest="70" BitmapOptimizations="True"
-                                                        DownsampleToViewSize="True"
-                                                        ErrorPlaceholder="person">
-                                                <forms:CachedImage.Transformations>
-                                                    <transformations:CircleTransformation BorderHexColor="#009E49"
-                                                                                      BorderSize="10" />
-                                                    <transformations:RoundedTransformation Radius="60" />
-                                                </forms:CachedImage.Transformations>
-                                            </forms:CachedImage>
-                                        </StackLayout>
-                                        <StackLayout WidthRequest="180">
-                                            <Label>
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="{Binding full_name}" FontSize="14"
-                                                          TextColor="{StaticResource Primary}"
-                                                          FontAttributes="Bold" />
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>
-                                            <Label>
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="{Binding mobile_num}" FontSize="12"
-                                                          TextColor="{StaticResource TextBlackColor}" />
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>
-                                            <Label LineBreakMode="TailTruncation">
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="{Binding del_address}" FontSize="12"
-                                                          TextColor="{StaticResource TextBlackColor}" />
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>
-                                            <Label >
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="Items: " FontSize="12" FontAttributes="Italic"
-                                                              TextColor="#C7C7C7" />
-                                                        <Span Text="{Binding itms_qty}" FontSize="12" FontAttributes="Italic"
-                                                              TextColor="{StaticResource TextBlackColor}" />
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>
-                                        </StackLayout>
-                                        <StackLayout HorizontalOptions="EndAndExpand">
-
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand"
+                                                     BackgroundColor="White"
+                                                     Margin="10">
+                                            <StackLayout WidthRequest="70" VerticalOptions="CenterAndExpand">
+                                                <forms:CachedImage x:Name="cusimg" Source="{Binding propic}"
+                                                                   Aspect="AspectFill"
+                                                                   LoadingPlaceholder="person.png" WidthRequest="70"
+                                                                   HeightRequest="70" BitmapOptimizations="True"
+                                                                   DownsampleToViewSize="True"
+                                                                   ErrorPlaceholder="person">
+                                                    <forms:CachedImage.Transformations>
+                                                        <transformations:CircleTransformation BorderHexColor="#009E49"
+                                                                                              BorderSize="10" />
+                                                        <transformations:RoundedTransformation Radius="60" />
+                                                    </forms:CachedImage.Transformations>
+                                                </forms:CachedImage>
+                                            </StackLayout>
+                                            <StackLayout WidthRequest="180">
+                                                <Label>
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding full_name}" FontSize="14"
+                                                                  TextColor="{StaticResource Primary}"
+                                                                  FontAttributes="Bold" />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                <Label>
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding mobile_num}" FontSize="12"
+                                                                  TextColor="{StaticResource TextBlackColor}" />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                <Label LineBreakMode="TailTruncation">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding del_address}" FontSize="12"
+                                                                  TextColor="{StaticResource TextBlackColor}" />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                <Label>
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="Note: " FontSize="12"
+                                                                  TextColor="#C7C7C7" />
+                                                            <Span Text="{Binding notes}" FontSize="12"
+                                                                  TextColor="{StaticResource NoteColor}" />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                            </StackLayout>
                                             <StackLayout HorizontalOptions="EndAndExpand">
+
                                                 <Label TextColor="{StaticResource PriceColor}">
                                                     <Label.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="₱ " FontSize="15" />
                                                             <Span Text="{Binding tot_payable}" FontSize="15"
-                                                              FontAttributes="Bold" />
+                                                                      FontAttributes="Bold" />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                <Label>
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="Items: " FontSize="12"
+                                                                  TextColor="#C7C7C7" />
+                                                            <Span Text="{Binding itms_qty}" FontSize="12"
+                                                                  TextColor="{StaticResource TextBlackColor}" />
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
                                             </StackLayout>
                                         </StackLayout>
-                                    </StackLayout>
 
-                                </SwipeView>
-                            </Frame>
-                        </ContentView>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </RefreshView>
+                                    </SwipeView>
+                                </Frame>
+                            </ContentView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+            <StackLayout x:Name="imgnofound" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" AbsoluteLayout.LayoutBounds="0,0,1,1"
+                         AbsoluteLayout.LayoutFlags="All" IsVisible="False">
+                <Image Source="nothing_found" 
+                       Aspect="AspectFit"
+                       HeightRequest="90" WidthRequest="90" />
+                <Label Text="No items are currently in-transit!" TextColor="{StaticResource TextSubColor}"/>
+                <Button Text="Reload" TextTransform="None" BackgroundColor="{StaticResource TextWhiteColor}"
+                        TextColor="{StaticResource Primary}" CornerRadius="5" Clicked="OnReload_OnClicked"/>
+            </StackLayout>
+            <StackLayout x:Name="imgnointernet" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" AbsoluteLayout.LayoutBounds="0,0,1,1"
+                         AbsoluteLayout.LayoutFlags="All" IsVisible="False">
+                <Image Source="wi_fioff" 
+                       Aspect="AspectFit"
+                       HeightRequest="90" WidthRequest="90" />
+                <Label Text="Connection Problem, please try again!" TextColor="{StaticResource TextSubColor}"/>
+                <Button Text="Retry" TextTransform="None" BackgroundColor="{StaticResource TextWhiteColor}"
+                        TextColor="{StaticResource Primary}" CornerRadius="5" Clicked="OnRetry_OnClicked"/>
+            </StackLayout>
+        </AbsoluteLayout>
     </StackLayout>
 </ContentPage>

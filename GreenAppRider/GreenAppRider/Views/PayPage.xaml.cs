@@ -39,9 +39,11 @@ namespace GreenAppRider.Views
 
         private async void BtnPay_OnClicked(object sender, EventArgs e)
         {
+            if(progressLoading.IsVisible) return;
             if (Convert.ToDouble(entrycash.Text) >= Convert.ToDouble(tot_payable.Text))
             {
                 if (!(infoLayout.BindingContext is V_Confirmed_Orders model)) return;
+                progressLoading.IsVisible = true;
                 var orders = new TBL_Orders()
                 {
                     id = model.id,
@@ -58,6 +60,7 @@ namespace GreenAppRider.Views
                     del_lat = model.del_lat,
                     del_long = model.del_long,
                     pickup_time = "-",
+                    rider_id = riderId,
                     itms_qty = model.itms_qty,
                     tot_payable = model.tot_payable
                 };
@@ -72,8 +75,11 @@ namespace GreenAppRider.Views
                     del_stat = "Delivered"
                 };
                 await TBL_Delivery.Update(orderDetails);
+
                 Oid = "";
                 del_Id = "";
+                IntransitPage._loaded = false;
+                progressLoading.IsVisible = false;
                 await DisplayAlert("Success", "Payment done!", "OK");
                 await Navigation.PopModalAsync();
             }

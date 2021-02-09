@@ -12,6 +12,7 @@ namespace GreenAppRider.Models
 
         public string id { get; set; }
         public string users_id { get; set; }
+        public string rider_id { get; set; }
         public string tot_payable { get; set; }
         public string cash_rendered { get; set; }
         public string cash_change { get; set; }

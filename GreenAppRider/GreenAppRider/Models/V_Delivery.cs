@@ -10,6 +10,7 @@ namespace GreenAppRider.Models
         public string id { get; set; }
         public string order_id { get; set; }
         public string users_id { get; set; }
+        public string rider_id { get; set; }
         public string full_name { get; set; }
         public string mobile_num { get; set; }
         public string emailadd { get; set; }

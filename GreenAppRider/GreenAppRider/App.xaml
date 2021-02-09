@@ -12,7 +12,9 @@
             <Color x:Key="Primary_Dark">#006931</Color>
             <Color x:Key="TextBlackColor">#252526</Color>
             <Color x:Key="PriceColor">#F8951E</Color>
+            <Color x:Key="NoteColor">#F00B00</Color>
             <Color x:Key="TextWhiteColor">White</Color>
+            <Color x:Key="TextSubColor">#D6DCDC</Color>
             <Style TargetType="Button">
                 <Setter Property="TextColor" Value="White"></Setter>
                 <Setter Property="VisualStateManager.VisualStateGroups">
