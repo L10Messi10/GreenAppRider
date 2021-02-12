@@ -4,7 +4,7 @@
              xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              xmlns:touchEffect="clr-namespace:TouchEffect;assembly=TouchEffect"
-             BackgroundImageSource="https://i.ibb.co/JR6cnhB/1095491.jpg"
+             BackgroundColor="{StaticResource Primary}"
              x:Class="GreenAppRider.Views.MePage">
     <StackLayout  Spacing="0" Padding="0" Orientation="Vertical">
         <ScrollView VerticalOptions="Start" Orientation="Vertical">

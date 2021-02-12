@@ -54,26 +54,22 @@
                                                         </StackLayout>
                                                     </StackLayout>
                                                 </SwipeItemView>
-                                            </SwipeItems>
-                                        </SwipeView.LeftItems>
-                                        <SwipeView.RightItems>
-                                            <SwipeItems Mode="Execute" SwipeBehaviorOnInvoked="Close">
                                                 <SwipeItemView BackgroundColor="{StaticResource Primary}" Margin="10"
-                                                               Invoked="OnMap_OnInvoked">
-                                                    <!--<StackLayout Margin="10">
+                                                                   Invoked="OnMap_OnInvoked">
+                                                    <StackLayout Margin="10">
                                                         <StackLayout Orientation="Vertical"
                                                                      VerticalOptions="CenterAndExpand"
                                                                      HorizontalOptions="CenterAndExpand">
-                                                            <forms:CachedImage Source="phone" HeightRequest="30"
+                                                            <forms:CachedImage Source="marker" HeightRequest="30"
                                                                                WidthRequest="30"
                                                                                Aspect="AspectFit" />
-                                                            <Label Text="Call" HorizontalOptions="CenterAndExpand"
+                                                            <Label Text="Location" HorizontalOptions="CenterAndExpand"
                                                                    TextColor="{StaticResource TextWhiteColor}" />
                                                         </StackLayout>
-                                                    </StackLayout>-->
+                                                    </StackLayout>
                                                 </SwipeItemView>
                                             </SwipeItems>
-                                        </SwipeView.RightItems>
+                                        </SwipeView.LeftItems>
 
                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand"
                                                      BackgroundColor="White"
