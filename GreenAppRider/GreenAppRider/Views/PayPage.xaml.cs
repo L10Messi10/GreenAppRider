@@ -76,6 +76,16 @@ namespace GreenAppRider.Views
                 };
                 await TBL_Delivery.Update(orderDetails);
 
+                var track = new TBL_OrderTracking()
+                {
+                    order_id = Oid,
+                    track_status = "Order Delivered",
+                    track_desc = "Transaction Successful. Thank you and order again!",
+                    track_time = Now.ToString("h:mm tt"),
+                    track_num = "5"
+                };
+                await TBL_OrderTracking.Insert(track);
+
                 Oid = "";
                 del_Id = "";
                 IntransitPage._loaded = false;

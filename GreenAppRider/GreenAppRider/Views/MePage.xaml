@@ -4,6 +4,7 @@
              xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              xmlns:touchEffect="clr-namespace:TouchEffect;assembly=TouchEffect"
+             xmlns:admob="clr-namespace:MarcTron.Plugin.Controls;assembly=Plugin.MtAdmob"
              BackgroundColor="{StaticResource Primary}"
              x:Class="GreenAppRider.Views.MePage">
     <StackLayout  Spacing="0" Padding="0" Orientation="Vertical">
@@ -58,5 +59,18 @@
             </StackLayout>
 
         </ScrollView>
+        <admob:MTAdView x:Name="MainPageAd" AdsId="{OnPlatform Android='ca-app-pub-3940256099942544/6300978111', iOS='ca-app-pub-3940256099942544/2934735716'}" 
+        IsVisible="true" PersonalizedAds="true" VerticalOptions="EndAndExpand">
+        <admob:MTAdView.HeightRequest>
+            <x:OnIdiom>
+                <x:OnIdiom.Phone>50</x:OnIdiom.Phone>
+                <x:OnIdiom.Tablet>90</x:OnIdiom.Tablet>
+                <x:OnIdiom.Desktop>90</x:OnIdiom.Desktop>
+            </x:OnIdiom>
+        </admob:MTAdView.HeightRequest>
+        </admob:MTAdView>
+        <!--<admob:MTAdView HeightRequest="100" BackgroundColor="Gray"
+                        VerticalOptions="EndAndExpand" 
+                        AdsId="ca-app-pub-7879306170422036/5813295776"/>-->
     </StackLayout>
 </ContentPage>

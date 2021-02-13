@@ -47,7 +47,7 @@ namespace GreenAppRider.Views
                 imgnointernet.IsVisible = false;
                 OrdersList.IsVisible = true;
                 RefreshView.IsRefreshing = true;
-                var getOrders = await MobileService.GetTable<V_Confirmed_Orders>().Where(p => p.order_choice == "Delivery").ToListAsync();
+                var getOrders = await MobileService.GetTable<V_Confirmed_Orders>().Where(p => p.order_choice == "Delivery" && p.order_status=="Ready").ToListAsync();
                 if (getOrders.Count != 0)
                 {
                     _loaded = true;
@@ -141,6 +141,16 @@ namespace GreenAppRider.Views
                 tot_payable = model.tot_payable
             };
             await TBL_Orders.Update(orders);
+
+            var track = new TBL_OrderTracking()
+            {
+                order_id = model.id,
+                track_status = "Order In-Transit",
+                track_desc = "Your Order has been picked up by our delivery rider and is now on your way!",
+                track_time = Now.ToString("h:mm tt"),
+                track_num = "4"
+            };
+            await TBL_OrderTracking.Insert(track);
             await DisplayAlert("In Transit", "The order is now in transit!", "OK");
             IntransitPage._loaded = false;
             await OnGetDeliveryOrders();
