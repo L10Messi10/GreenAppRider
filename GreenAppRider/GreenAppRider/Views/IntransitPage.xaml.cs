@@ -60,7 +60,7 @@ namespace GreenAppRider.Views
            
         }
 
-        private void OnCall_OnInvoked(object sender, EventArgs e)
+        private async void OnCall_OnInvoked(object sender, EventArgs e)
         {
             try
             {
@@ -70,7 +70,7 @@ namespace GreenAppRider.Views
             }
             catch
             {
-                //ignored
+                await DisplayAlert("Error", "An error occured, please try again!", "OK");
             }
         }
 
@@ -89,7 +89,7 @@ namespace GreenAppRider.Views
             }
             catch
             {
-                //ignored
+                await DisplayAlert("Error connection", "An error occured, please check your internet connection and try again!", "OK");
             }
             
         }

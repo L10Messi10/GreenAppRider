@@ -24,10 +24,17 @@ namespace GreenAppRider.Views
         }
         private async Task OnGetDeliveryOrdersDetails()
         {
-            RefreshView.IsRefreshing = true;
-            var getOrderss = await MobileService.GetTable<V_Orders>().Where(p => p.order_id == Oid).ToListAsync();
-            OrdersList.ItemsSource = getOrderss;
-            RefreshView.IsRefreshing = false;
+            try
+            {
+                RefreshView.IsRefreshing = true;
+                var getOrderss = await MobileService.GetTable<V_Orders>().Where(p => p.order_id == Oid).ToListAsync();
+                OrdersList.ItemsSource = getOrderss;
+                RefreshView.IsRefreshing = false;
+            }
+            catch
+            {
+                await DisplayAlert("Error connection", "An error occured, please check your internet connection and try again!", "OK");
+            }
         }
 
         private async void Btnclose_OnClicked(object sender, EventArgs e)

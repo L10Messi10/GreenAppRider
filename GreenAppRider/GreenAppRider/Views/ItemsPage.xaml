@@ -120,6 +120,16 @@
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
+                                                <Label>
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="Building: " FontSize="12"
+                                                                  TextColor="#C7C7C7" />
+                                                            <Span Text="{Binding building_name}" FontSize="12"
+                                                                  TextColor="{StaticResource Primary_Dark}" />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
                                             </StackLayout>
                                             <StackLayout HorizontalOptions="EndAndExpand">
 
@@ -186,7 +196,7 @@
                     Color="{StaticResource Primary}"/>
             </StackLayout>
         </AbsoluteLayout>
-        <controls:MTAdView x:Name="MainPageAd" AdsId="{OnPlatform Android='ca-app-pub-3940256099942544/6300978111', iOS='ca-app-pub-3940256099942544/2934735716'}" 
+        <controls:MTAdView x:Name="MainPageAd" AdsId="{OnPlatform Android='ca-app-pub-7879306170422036/5813295776', iOS='ca-app-pub-3940256099942544/2934735716'}" 
                         IsVisible="true" PersonalizedAds="true" VerticalOptions="EndAndExpand">
             <controls:MTAdView.HeightRequest>
                 <x:OnIdiom>

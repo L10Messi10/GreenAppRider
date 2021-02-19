@@ -5,7 +5,11 @@
 
     <Grid>
         <StackLayout VerticalOptions="FillAndExpand" BackgroundColor="Black"
-                     Opacity="0.4"/>
+                     Opacity="0.4">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_OnTapped"/>
+            </StackLayout.GestureRecognizers>
+        </StackLayout>
         
             <Frame HeightRequest="300" CornerRadius="20" Padding="0"
                    BackgroundColor="{StaticResource TextWhiteColor}" VerticalOptions="EndAndExpand">

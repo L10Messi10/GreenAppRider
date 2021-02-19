@@ -107,60 +107,75 @@ namespace GreenAppRider.Views
 
         private async void In_Transit_OnInvoked(object sender, EventArgs e)
         {
-            var ans = await DisplayAlert("Deliver now?", "Are  you sure to deliver this order now?", "Yes", "No");
-            if (!ans) return;
-            if (!(sender is SwipeItem item) || !(item.BindingContext is V_Confirmed_Orders model)) return;
-            var oid = model.id;
-            //insert to delivery table
-            progressLoading.IsVisible = true;
-            var orderDetails = new TBL_Delivery()
+            try
             {
-                order_id = oid,
-                users_id = model.users_id,
-                del_datetime = Now.ToString("ddd, dd MMM yyyy h:mm tt"),
-                del_stat = "In Transit"
-            };
-            await TBL_Delivery.Insert(orderDetails);
-            //Update tbl_orders
-            var orders = new TBL_Orders()
-            {
-                id = model.id,
-                users_id = model.users_id,
-                order_date = model.order_date,
-                cart_datetime = model.cart_datetime,
-                stat = "1",
-                order_status = "Ordered",
-                order_choice = "For Delivery",
-                del_address = model.del_address,
-                notes = model.notes,
-                del_lat = model.del_lat,
-                del_long = model.del_long,
-                pickup_time = "-",
-                itms_qty = model.itms_qty,
-                rider_id = riderId,
-                tot_payable = model.tot_payable
-            };
-            await TBL_Orders.Update(orders);
+                var ans = await DisplayAlert("Deliver now?", "Are  you sure to deliver this order now?", "Yes", "No");
+                if (!ans) return;
+                if (!(sender is SwipeItem item) || !(item.BindingContext is V_Confirmed_Orders model)) return;
+                var oid = model.id;
+                //insert to delivery table
+                progressLoading.IsVisible = true;
+                var orderDetails = new TBL_Delivery()
+                {
+                    order_id = oid,
+                    users_id = model.users_id,
+                    del_datetime = Now.ToString("ddd, dd MMM yyyy h:mm tt"),
+                    del_stat = "In Transit"
+                };
+                await TBL_Delivery.Insert(orderDetails);
+                //Update tbl_orders
+                var orders = new TBL_Orders()
+                {
+                    id = model.id,
+                    users_id = model.users_id,
+                    order_date = model.order_date,
+                    cart_datetime = model.cart_datetime,
+                    stat = "1",
+                    order_status = "In Transit",
+                    order_choice = "For Delivery",
+                    del_address = model.del_address,
+                    notes = model.notes,
+                    building_name=model.building_name,
+                    del_lat = model.del_lat,
+                    del_long = model.del_long,
+                    pickup_time = "-",
+                    itms_qty = model.itms_qty,
+                    rider_id = riderId,
+                    tot_payable = model.tot_payable
+                };
+                await TBL_Orders.Update(orders);
 
-            var track = new TBL_OrderTracking()
+                var track = new TBL_OrderTracking()
+                {
+                    order_id = model.id,
+                    track_status = "Order In-Transit",
+                    track_desc = "Your Order has been picked up by our delivery rider and is now on your way!",
+                    track_time = Now.ToString("h:mm tt"),
+                    track_num = "4"
+                };
+                await TBL_OrderTracking.Insert(track);
+                await DisplayAlert("In Transit", "The order is now in transit!", "OK");
+                IntransitPage._loaded = false;
+                await OnGetDeliveryOrders();
+            }
+            catch
             {
-                order_id = model.id,
-                track_status = "Order In-Transit",
-                track_desc = "Your Order has been picked up by our delivery rider and is now on your way!",
-                track_time = Now.ToString("h:mm tt"),
-                track_num = "4"
-            };
-            await TBL_OrderTracking.Insert(track);
-            await DisplayAlert("In Transit", "The order is now in transit!", "OK");
-            IntransitPage._loaded = false;
-            await OnGetDeliveryOrders();
+                await DisplayAlert("Error connection", "An error occured, please check your internet connection and try again!", "OK");
+            }
         }
 
         private async void OnDetails_OnInvoked(object sender, EventArgs e)
         {
-            var item = sender as SwipeItemView;
-            if (item?.BindingContext is V_Confirmed_Orders model) Oid = model.id;
-            await Navigation.PushModalAsync(new OrderDetailPage());
+            try
+            {
+                var item = sender as SwipeItemView;
+                if (item?.BindingContext is V_Confirmed_Orders model) Oid = model.id;
+                await Navigation.PushModalAsync(new OrderDetailPage());
+            }
+            catch
+            {
+                await DisplayAlert("Error connection", "An error occured, please check your internet connection and try again!", "OK");
+            }
         }
 
         private async void OnReload_OnClicked(object sender, EventArgs e)

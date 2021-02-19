@@ -4,7 +4,7 @@
 	<application android:label="GreenAppRider.Android" android:theme="@style/MainTheme">
 			<meta-data
 				android:name="com.google.android.gms.ads.APPLICATION_ID"
-				android:value="ca-app-pub-3940256099942544~3347511713"/>
+				android:value="ca-app-pub-7879306170422036~6004867462"/>
 
 	</application>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />

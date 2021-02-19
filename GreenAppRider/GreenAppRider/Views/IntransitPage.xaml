@@ -125,6 +125,16 @@
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
+                                                <Label>
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="Building: " FontSize="12"
+                                                                  TextColor="#C7C7C7" />
+                                                            <Span Text="{Binding building_name}" FontSize="12"
+                                                                  TextColor="{StaticResource Primary_Dark}" />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
                                             </StackLayout>
                                             <StackLayout HorizontalOptions="EndAndExpand">
 
