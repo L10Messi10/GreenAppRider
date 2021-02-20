@@ -28,6 +28,7 @@ namespace GreenAppRider.Models
         public string del_lat { get; set; }
         public string del_long { get; set; }
         public string notes { get; set; }
+        public string building_name { get; set; }
         public string propic { get; set; }
         public string del_stat { get; set; }
 

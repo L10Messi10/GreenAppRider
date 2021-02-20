@@ -135,7 +135,7 @@ namespace GreenAppRider.Views
                     order_choice = "For Delivery",
                     del_address = model.del_address,
                     notes = model.notes,
-                    building_name=model.building_name,
+                    building_name = model.building_name,
                     del_lat = model.del_lat,
                     del_long = model.del_long,
                     pickup_time = "-",
