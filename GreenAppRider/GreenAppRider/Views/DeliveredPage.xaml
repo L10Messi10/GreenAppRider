@@ -132,7 +132,7 @@
                         TextColor="{StaticResource Primary}" CornerRadius="5" Clicked="OnReload_OnClicked"/>
             </StackLayout>
             <StackLayout x:Name="imgnointernet" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" AbsoluteLayout.LayoutBounds="0,0,1,1"
-                         AbsoluteLayout.LayoutFlags="All" IsVisible="False" WidthRequest="200">
+                         AbsoluteLayout.LayoutFlags="All" IsVisible="False">
                 <Image Source="wi_fioff" 
                        Aspect="AspectFit"
                        HeightRequest="90" WidthRequest="90" />
@@ -141,7 +141,7 @@
                         TextColor="{StaticResource Primary}" CornerRadius="5" Clicked="OnRetry_OnClicked"/>
             </StackLayout>
         </AbsoluteLayout>
-        <controls:MTAdView x:Name="MainPageAd" AdsId="{OnPlatform Android='ca-app-pub-3940256099942544/6300978111', iOS='ca-app-pub-3940256099942544/2934735716'}" 
+        <controls:MTAdView x:Name="MainPageAd" AdsId="{OnPlatform Android='ca-app-pub-39402560999425446300978111', iOS='ca-app-pub-3940256099942544/2934735716'}" 
                            IsVisible="true" PersonalizedAds="true" VerticalOptions="EndAndExpand">
             <controls:MTAdView.HeightRequest>
                 <x:OnIdiom>
