@@ -47,6 +47,7 @@ namespace GreenAppRider.Views
                     imgnofound.IsVisible = true;
                     imgnointernet.IsVisible = false;
                     OrdersList.IsVisible = false;
+                    OrdersList.ItemsSource = null;
                 }
                 RefreshView.IsRefreshing = false;
             }

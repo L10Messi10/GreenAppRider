@@ -28,7 +28,8 @@
                                                IsClippedToBounds="True">
                                         <SwipeView.LeftItems>
                                             <SwipeItems Mode="Execute" SwipeBehaviorOnInvoked="Close">
-                                                <SwipeItemView BackgroundColor="{StaticResource Primary}" Margin="10">
+                                                <SwipeItemView BackgroundColor="{StaticResource Primary}" Margin="10"
+                                                               Invoked="SwipeItemView_OnInvoked">
                                                     <StackLayout Margin="10">
                                                         <StackLayout Orientation="Vertical"
                                                                      VerticalOptions="CenterAndExpand"

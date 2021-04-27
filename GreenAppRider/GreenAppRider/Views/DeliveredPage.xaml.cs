@@ -43,6 +43,7 @@ namespace GreenAppRider.Views
                 {
                     imgnofound.IsVisible = true;
                     DeliveredList.IsVisible = false;
+                    DeliveredList.ItemsSource = null;
                 }
                 RefreshView.IsRefreshing = false;
             }
@@ -67,6 +68,18 @@ namespace GreenAppRider.Views
 
         private async void OnRetry_OnClicked(object sender, EventArgs e)
         {
+            await OnGetDeliveryOrdersInDelivered();
+        }
+
+        private async void SwipeItemView_OnInvoked(object sender, EventArgs e)
+        {
+            var item = sender as SwipeItemView;
+            if (item?.BindingContext is V_Delivery model) Oid = model.id;
+            var order = new TBL_Delivery()
+            {
+                id = Oid,
+            };
+            await TBL_Delivery.Delete(order);
             await OnGetDeliveryOrdersInDelivered();
         }
     }

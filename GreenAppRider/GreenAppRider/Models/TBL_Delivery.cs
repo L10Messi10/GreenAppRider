@@ -26,5 +26,9 @@ namespace GreenAppRider.Models
         {
             await MobileService.GetTable<TBL_Delivery>().UpdateAsync(orders);
         }
+        public static async Task Delete(TBL_Delivery deleteDelivery)
+        {
+            await MobileService.GetTable<TBL_Delivery>().DeleteAsync(deleteDelivery);
+        }
     }
 }

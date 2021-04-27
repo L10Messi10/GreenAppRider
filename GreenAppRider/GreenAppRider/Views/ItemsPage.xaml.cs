@@ -57,6 +57,7 @@ namespace GreenAppRider.Views
                 {
                     imgnofound.IsVisible = true;
                     OrdersList.IsVisible = false;
+                    OrdersList.ItemsSource = null;
                 }
                 progressLoading.IsVisible = false;
                 RefreshView.IsRefreshing = false;

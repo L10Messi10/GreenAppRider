@@ -99,6 +99,22 @@ namespace GreenAppRider.Views
                     Oid = "";
                     del_Id = "";
                     IntransitPage._loaded = false;
+
+                    //Save order history
+                    var orderhistory = new TBL_OrderHistory()
+                    {
+                        order_id = model.id,
+                        users_id = model.users_id,
+                        cash_change = Convert.ToDouble(spanChange.Text),
+                        cash_rendered = Convert.ToDouble(entrycash.Text),
+                        order_status = "Done",
+                        itms_qty = model.itms_qty,
+                        order_choice = "Delivery",
+                        cart_datetime = Now.ToString("yyyy-MM-dd h:mm tt"),
+                        tot_payable = Convert.ToDouble(model.tot_payable)
+                    };
+                    await TBL_OrderHistory.Insert(orderhistory);
+
                     progressLoading.IsVisible = false;
                     await DisplayAlert("Success", "Payment done!", "OK");
                     await Navigation.PopModalAsync();
@@ -117,7 +133,11 @@ namespace GreenAppRider.Views
 
         private void Entrycash_OnTextChanged(object sender, TextChangedEventArgs e)
         {
-            spanChange.Text = Convert.ToDouble(entrycash.Text) > Convert.ToDouble(tot_payable.Text) ? (Convert.ToDouble(entrycash.Text) - Convert.ToDouble(tot_payable.Text)).ToString(CultureInfo.InvariantCulture) : "0";
+            if (entrycash.Text != "")
+            {
+                spanChange.Text = Convert.ToDouble(entrycash.Text) > Convert.ToDouble(tot_payable.Text) ? (Convert.ToDouble(entrycash.Text) - Convert.ToDouble(tot_payable.Text)).ToString(CultureInfo.InvariantCulture) : "0";
+            }
+            
         }
 
         private async void TapGestureRecognizer_OnTapped(object sender, EventArgs e)
